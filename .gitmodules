@@ -1,0 +1,9 @@
+[submodule "jsoncpp"]
+	path = jsoncpp
+	url = https://github.com/open-source-parsers/jsoncpp
+[submodule "opencv"]
+	path = opencv
+	url = https://github.com/opencv/opencv
+[submodule "curl"]
+	path = curl
+	url = https://github.com/curl/curl
