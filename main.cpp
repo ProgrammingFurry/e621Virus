@@ -69,14 +69,14 @@ int getRandomPost(Json::Value posts){
 
 int getRandomPageId(size_t pagenum, std::vector<int> startIds){
   std::random_device rd;
-  std::mt19937 gen(rd()); // mersenne_twister_engine seeded with rd()
+  std::mt19937 gen(rd());
   std::uniform_int_distribution<> distrib(0, pagenum-1);
   return startIds[distrib(gen)];
 }
 
 std::pair<int, int> getRandomWindowSize(int limitingSize, axis limitingSide){
   std::random_device rd;
-  std::mt19937 gen(rd()); // mersenne_twister_engine seeded with rd()
+  std::mt19937 gen(rd()); 
   
   
   if (limitingSize == height) {
@@ -94,7 +94,7 @@ std::pair<int, int> getRandomWindowSize(int limitingSize, axis limitingSide){
 
 std::pair<int, int> getRandomWindowPosition(int windowWidth, int windowHeigh) {
   std::random_device rd;
-  std::mt19937 gen(rd()); // mersenne_twister_engine seeded with rd()
+  std::mt19937 gen(rd());
   std::uniform_int_distribution<> distribW(1, DisplayWidth - windowWidth);
   int movedX = distribW(gen);
   std::uniform_int_distribution<> distribH(1, DisplayHeight - windowHeigh);
@@ -104,7 +104,7 @@ std::pair<int, int> getRandomWindowPosition(int windowWidth, int windowHeigh) {
 
 void randomSleepTime(int min, int max){
   std::random_device rd;
-  std::mt19937 gen(rd()); // mersenne_twister_engine seeded with rd()
+  std::mt19937 gen(rd()); 
   std::uniform_int_distribution<> distrib(min, max);
   int selectedTime = distrib(gen);
   std::this_thread::sleep_for (std::chrono::seconds(selectedTime));
@@ -173,7 +173,6 @@ std::pair<std::string,std::string> getPictureLink(std::string login, std::string
   
   
   if (obj["posts"].size() == 100 && !lastPageFount) {
-    std::cout <<"Next page";
     pagenum +=1 ;
     startId.push_back(obj["posts"][99]["id"].asInt());
     std::cout << std::to_string(startId[pagenum-1]);
@@ -209,13 +208,7 @@ std::string displayImage(const std::string & imagePath, const Json::Value & sett
 		fprintf(stderr, "curl_easy_perform() failed: %s\n",
 				curl_easy_strerror(res));
 	} else {
-		
-
-		//printf("%lu bytes retrieved\n", (long) chunk.size);
-
 		std::vector<uint8_t> vec(buffer.begin(), buffer.end());
-
-    //cv::Mat temp(1, chunk.size, CV_8UC3(3),  chunk.memory);
 		cv::Mat image = cv::imdecode(vec, cv::IMREAD_UNCHANGED);
 		cv::namedWindow(Id, cv::WINDOW_AUTOSIZE + cv::WINDOW_GUI_NORMAL);
 
@@ -238,13 +231,11 @@ std::string displayImage(const std::string & imagePath, const Json::Value & sett
       cv::startWindowThread	();
 			cv::imshow(Id, image);
       cv::moveWindow(Id, movedX, movedY);
-      std::cout << std::endl << "New width and height" << newWidth << ", " << newHeight << std::endl;
-      std::cout << std::endl << "New position" << movedX << ", " << movedY << std::endl;
+      //std::cout << std::endl << "New width and height" << newWidth << ", " << newHeight << std::endl; //testing code
+      //std::cout << std::endl << "New position" << movedX << ", " << movedY << std::endl;
       
 	    curl_easy_cleanup(curl_handle);
       return (Id);
-
-      //cv::waitKey();
 		}
 	}
 
@@ -265,7 +256,7 @@ void windowThread(Json::Value settings, size_t& pagenum, std::vector<int>& start
 
   std::string threadWindow = displayImage(imagePath, settings, Id);
 
-  #ifdef _WIN32
+  #ifdef _WIN32 //completely untested
   windows::BringWindowToTop(threadWindow);
   #endif
 
