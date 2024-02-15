@@ -17,3 +17,5 @@ seconds.
 This project has barely begun being made and it is a passion project I started as a way to learn programming
 better. Any modifications or comments will be taken into consideration and I wish to improve on the code.
 
+All licences for submodules are written in their respective github links found in .gitmodules
+All images are from e621 and while the program runs the links to the images are printed in the console
