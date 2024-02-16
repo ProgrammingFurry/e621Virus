@@ -1,3 +1,13 @@
+This program is made as a way to work as many computer viruses are depicted, 
+opening e621 images at random intervals on your computer screen. While there 
+is randomization at work, most options can easily be changed in the config 
+file made after opening the program for the first time. 
+
+This is NOT meant to be 
+an actual virus nor is it meant to be used maliciously. The intent is either 
+harmless fun and the basis for creating it was to experiment using JSON files, configs
+and APIs in C++.
+
 How to build on linux (tested on windows subsystem for linux, still WIP):
 1. Pull the project from github
 2. Use "git submodule update --init --recursive" to get all submodules
@@ -14,7 +24,7 @@ file created. Create an api key on e621 and insert the key and your username int
 Additionally edit the tags and other values as much as you'd like. All time variables are in 
 seconds.
 
-This project has barely begun being made and it is a passion project I started as a way to learn programming
+This project has barely begun and it is a passion project I started as a way to learn programming
 better. Any modifications or comments will be taken into consideration and I wish to improve on the code.
 
 All licences for submodules are written in their respective github links found in .gitmodules
