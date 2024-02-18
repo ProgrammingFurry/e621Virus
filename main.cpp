@@ -446,9 +446,9 @@ int main() {
   selection = tolower(selection);
   searchType selectedType;
 
-  if (selection = 'p') {
+  if (selection == 'p') {
     selectedType = pools;
-  } else if (selection = 't') {
+  } else if (selection == 't') {
     selectedType = tags;
   } else{
     std::cout <<"Unknown selection, please select 'p' for pools or 't' for tags" << std::endl;
